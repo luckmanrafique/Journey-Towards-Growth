@@ -1,0 +1,17 @@
+Types of operator: 
+	Equal	      	-eq
+	>=		        -ge
+  <=		        -le
+  Not= 		      -ne
+  Greater than 	-gt
+  Less than	    -lt     	
+
+
+Command 
+	Copy			      cp [file name] [destination file name]
+	Rename 		mv    [old] [new]
+	File list show 	ls
+	Delete file 		rm [file name]
+	Delete folder 	rm -r folder/
+	Compare files		diff f1.sh f2.sh
+				          cmp f1.sh f2.sh 
