@@ -7,6 +7,7 @@ do
 		a|e|i|o|u|A|E|I|O|U)
 			count=$((count+1))
 			;;
+		*)
 	esac
 done
 echo "Number of vowels: $count"
