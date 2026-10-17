@@ -10,5 +10,5 @@ if [ $((sum%2)) -eq 0 ] ; then
 else echo "SUM ID ODD"
 fi
 echo "SUM: $sum" > result.txt
-cat result.txt
 echo "=== RESULT SAVED IN result.txt ==="
+cat result.txt
