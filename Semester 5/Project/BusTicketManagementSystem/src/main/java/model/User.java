@@ -1,0 +1,25 @@
+package model;
+
+public class User {
+    private int userID;
+    private String username;
+    private String fullname;
+    private String role;
+
+    public User(int userID,String username,String fullName,String role){
+        this.userID=userID;
+        this.username=username;
+        this.fullname=fullName;
+        this.role=role;
+    }
+    public int getUserID(){
+        return userID;
+    }
+    public String getUsername(){
+        return username;
+    }
+    public String getFullname(){
+        return fullname;
+    }
+    public String getRole(){return role;}
+}
