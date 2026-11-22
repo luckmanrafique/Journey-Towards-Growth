@@ -1,14 +1,18 @@
 package com.busticket;
-import config.DatabaseConnection;
-import java.sql.Connection;
-
+import ui.LoginFrame;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 public class Main {
     public static void main(String[] args){
-        Connection connection=DatabaseConnection.getConnection();
-        if(connection != null){
-            System.out.println("Database Connected Successfully!");
-        }else{
-            System.out.println("Connection Failed!");
-        }
+        SwingUtilities.invokeLater(()->{
+            try{
+                UIManager.setLookAndFeel(
+                        UIManager.getSystemLookAndFeelClassName()
+                );
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            new LoginFrame().setVisible(true);
+        });
     }
 }
