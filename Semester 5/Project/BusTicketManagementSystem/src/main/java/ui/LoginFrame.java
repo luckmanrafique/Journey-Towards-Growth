@@ -5,7 +5,7 @@ import model.User;
 import javax.swing.*;
 import java.awt.*;
 public class LoginFrame extends JFrame {
-    final String dFONT="Arial";
+    final String dFONT="Times New Roman";
 
     private JTextField usernameField;
     private JPasswordField passwordField;
@@ -29,23 +29,20 @@ public class LoginFrame extends JFrame {
         leftPanel.setBorder(BorderFactory.createEmptyBorder(90,35,40,35));
 
         JLabel logo=new JLabel("BUS TICKET");
-        logo.setFont(new Font("Typewriter",Font.BOLD,30));
+        logo.setFont(new Font(dFONT,Font.BOLD,30));
         logo.setForeground(Color.WHITE);
         logo.setAlignmentX(Component.CENTER_ALIGNMENT);
         JLabel subtitle=new JLabel("MANAGEMENT SYSTEM");
-        subtitle.setFont(new Font("Times New Roman",Font.PLAIN,15));
+        subtitle.setFont(new Font(dFONT,Font.PLAIN,15));
         subtitle.setForeground(new Color(190,205,225));
         subtitle.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JLabel description=new JLabel(
-                "<html><center>Manage bus schedules,<br>" +
-                        "bookings and passengers<br>" +
-                        "from one place.</center></html>"
+                "<html><center>Manage bus schedules,bookings and passengers from one place.</center></html>"
         );
-        description.setFont(new Font("Arial",Font.PLAIN,17));
+        description.setFont(new Font(dFONT,Font.PLAIN,12));
         description.setForeground(Color.WHITE);
         description.setAlignmentX(Component.CENTER_ALIGNMENT);
-
         leftPanel.add(logo);
         leftPanel.add(Box.createVerticalStrut(10));
         leftPanel.add(subtitle);
@@ -56,25 +53,25 @@ public class LoginFrame extends JFrame {
         rightPanel.setBackground(Color.WHITE);
         rightPanel.setLayout(null);
         JLabel welcomeLabel=new JLabel("Welcome Back!");
-        welcomeLabel.setFont(new Font("Arial",Font.BOLD,28));
+        welcomeLabel.setFont(new Font(dFONT,Font.BOLD,28));
         welcomeLabel.setForeground(new Color(20,39,70));
         welcomeLabel.setBounds(55,65,300,40);
         JLabel instructionLabel=new JLabel("Login to access your account");
-        instructionLabel.setFont(new Font("Arial",Font.PLAIN,14));
+        instructionLabel.setFont(new Font(dFONT,Font.PLAIN,14));
         instructionLabel.setForeground(Color.GRAY);
         instructionLabel.setBounds(57,108,300,25);
         JLabel usernameLabel=new JLabel("Username");
         usernameLabel.setBounds(57,165,300,25);
-        usernameLabel.setFont(new Font("Arial",Font.BOLD,14));
+        usernameLabel.setFont(new Font(dFONT,Font.BOLD,14));
         usernameField=new JTextField();
         usernameField.setBounds(57,193,320,42);
         usernameField.setFont(new Font(dFONT,Font.PLAIN,15));
         JLabel passwordLabel=new JLabel("Password");
         passwordLabel.setBounds(57,252,300,25);
-        passwordLabel.setFont(new Font("Arial",Font.PLAIN,15));
+        passwordLabel.setFont(new Font(dFONT,Font.BOLD,15));
         passwordField=new JPasswordField();
         passwordField.setBounds(57,280,320,42);
-        passwordField.setFont(new Font("Arial",Font.PLAIN,14));
+        passwordField.setFont(new Font(dFONT,Font.PLAIN,14));
         showPassword=new JCheckBox("Show Password");
         showPassword.setBounds(57,327,160,25);
         showPassword.setBackground(Color.WHITE);
@@ -91,7 +88,7 @@ public class LoginFrame extends JFrame {
         loginButton.setBounds(57,370,320,45);
         loginButton.setBackground(new Color(20,39,70));
         loginButton.setForeground(Color.BLACK);
-        loginButton.setFont(new Font("Arial",Font.BOLD,15));
+        loginButton.setFont(new Font(dFONT,Font.BOLD,15));
         loginButton.setFocusPainted(false);
         loginButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         loginButton.addActionListener(e->login());
