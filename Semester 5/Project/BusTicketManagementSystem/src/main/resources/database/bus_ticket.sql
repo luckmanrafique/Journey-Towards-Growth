@@ -1,19 +1,14 @@
-
-CREATE DATABASE bus_ticket_db;
-
-USE bus_ticket_db;
-
--- 1. Users
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
     full_name VARCHAR(100) NOT NULL,
     role ENUM('ADMIN', 'STAFF') NOT NULL DEFAULT 'STAFF',
+
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    is_active TINYINT(1) NOT NULL DEFAULT 1;
 );
 
--- 2. Buses
 CREATE TABLE buses (
     bus_id INT AUTO_INCREMENT PRIMARY KEY,
     bus_name VARCHAR(100) NOT NULL,
@@ -23,7 +18,6 @@ CREATE TABLE buses (
     status ENUM('ACTIVE', 'INACTIVE') DEFAULT 'ACTIVE'
 );
 
--- 3. Routes
 CREATE TABLE routes (
     route_id INT AUTO_INCREMENT PRIMARY KEY,
     source VARCHAR(100) NOT NULL,
@@ -33,7 +27,6 @@ CREATE TABLE routes (
     UNIQUE KEY unique_route (source, destination)
 );
 
--- 4. Trips
 CREATE TABLE trips (
     trip_id INT AUTO_INCREMENT PRIMARY KEY,
     bus_id INT NOT NULL,
@@ -47,7 +40,6 @@ CREATE TABLE trips (
     FOREIGN KEY (route_id) REFERENCES routes(route_id)
 );
 
--- 5. Bus Seats
 CREATE TABLE bus_seats (
     seat_id INT AUTO_INCREMENT PRIMARY KEY,
     bus_id INT NOT NULL,
@@ -57,7 +49,7 @@ CREATE TABLE bus_seats (
     UNIQUE KEY unique_bus_seat (bus_id, seat_number)
 );
 
--- 6. Bookings
+
 CREATE TABLE bookings (
     booking_id INT AUTO_INCREMENT PRIMARY KEY,
     ticket_number VARCHAR(40) NOT NULL UNIQUE,
@@ -75,7 +67,6 @@ CREATE TABLE bookings (
     FOREIGN KEY (booked_by) REFERENCES users(user_id)
 );
 
--- 7. Booking Seats
 CREATE TABLE booking_seats (
     id INT AUTO_INCREMENT PRIMARY KEY,
     booking_id INT NOT NULL,
@@ -101,3 +92,23 @@ CREATE TABLE payments (
 
     FOREIGN KEY (booking_id) REFERENCES bookings(booking_id)
 );
+
+CREATE TABLE ticket_cancellations (
+      cancellation_id INT AUTO_INCREMENT PRIMARY KEY,
+
+      booking_id INT NOT NULL,
+      cancelled_by INT NOT NULL,
+
+      seat_numbers TEXT,
+
+      cancellation_reason VARCHAR(255),
+
+      cancelled_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+      FOREIGN KEY (booking_id)
+          REFERENCES bookings(booking_id),
+
+      FOREIGN KEY (cancelled_by)
+          REFERENCES users(user_id)
+);
+
