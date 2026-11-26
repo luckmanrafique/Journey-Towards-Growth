@@ -41,7 +41,7 @@ public class UserDAO {
         String sql= """
                 SELECT user_id,username,password_hash,full_name,role
                 FROM users
-                WHERE username=?
+                WHERE username=? AND is_active=1
                 """;
         try(Connection con=DatabaseConnection.getConnection();
             PreparedStatement ps=con.prepareStatement(sql)){
